@@ -79,20 +79,23 @@ body {
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
+  background-color: transparent;
 }
 
 #tools a {
   color: var(--text-color);
   text-decoration: none;
   font-size: 1rem;
+  background-color: transparent;
 }
 
 #tools a:hover {
   color: var(--primary-color);
   text-decoration: underline;
+  background-color: transparent;
 }
 
-/* *********** Navigation Styles ************ */
+/*Navigation Styles  */
 nav {
   background-color: var(--nav-background);
   color: var(--text-color);
@@ -120,6 +123,7 @@ nav a {
   text-decoration: none;
   padding: 0.75rem 1rem;
   transition: background-color 0.3s ease;
+  background-color: transparent;
 }
 
 nav a:hover {
@@ -127,7 +131,7 @@ nav a:hover {
   color: var(--nav-background);
 }
 
-/* *********** Main Content ************ */
+/*Main Content*/
 main {
   flex: 1;
   padding: 2rem;
@@ -140,7 +144,7 @@ h1 {
   text-align: left;
 }
 
-/* *********** Hero Section ************ */
+/*Hero Section */
 .hero-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 10px;
@@ -154,11 +158,13 @@ h1 {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: center;
+  background-color: transparent;
 }
 
 .hero-text {
   color: white;
   padding: 1rem;
+  background-color: transparent;
 }
 
 .hero-text h2 {
@@ -172,12 +178,14 @@ h1 {
   list-style: none;
   padding: 0;
   margin-bottom: 1.5rem;
+  background-color: transparent;
 }
 
 .hero-text li {
   padding: 0.5rem 0;
   color: white;
   font-size: 1.1rem;
+  background-color: transparent;
 }
 
 .hero-text li::before {
@@ -216,9 +224,11 @@ h1 {
 /* *********** Reviews Section ************ */
 .reviews {
   background-color: #f8f9fa;
+  color: var(--text-color);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
 }
 
 .reviews h2 {
@@ -232,6 +242,7 @@ h1 {
 .reviews ul {
   list-style: none;
   padding: 0;
+  background-color: transparent;
 }
 
 .reviews li {
@@ -248,9 +259,11 @@ h1 {
 /* *********** Upgrades Section ************ */
 .upgrades {
   background-color: #f8f9fa;
+  color: var(--text-color);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
 }
 
 .upgrades h2 {
@@ -269,6 +282,7 @@ h1 {
 
 .upgrade-item {
   text-align: center;
+  color: var(--text-color);
   background: white;
   padding: 1rem;
   border-radius: 8px;
@@ -278,6 +292,7 @@ h1 {
 .upgrade-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background-color: transparent;
 }
 
 .upgrade-item img {
@@ -285,6 +300,7 @@ h1 {
   height: 80px;
   object-fit: contain;
   margin-bottom: 0.5rem;
+  background-color: transparent;
 }
 
 .upgrade-item a {
