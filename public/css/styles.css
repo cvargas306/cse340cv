@@ -1,11 +1,11 @@
-/******* Change Box Model ***************/
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* *********** Variables ************ */
+/* Variables  */
 :root {
   --primary-color: #00bcd4;
   --secondary-color: #333;
@@ -23,7 +23,7 @@ body {
   padding: 0;
   line-height: 1.6;
   color: var(--text-color);
-  /* Add checkerboard background */
+  
   background-image: url('/images/site/checkerboard.jpg');
   background-repeat: repeat;
   background-attachment: fixed;
@@ -213,7 +213,7 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* *********** Content Wrapper ************ */
+/* Content Wrapper */
 .content-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -221,7 +221,7 @@ h1 {
   margin-top: 2rem;
 }
 
-/* *********** Reviews Section ************ */
+/* Reviews Section  */
 .reviews {
   background-color: #f8f9fa;
   color: var(--text-color);
@@ -256,7 +256,7 @@ h1 {
   border-bottom: none;
 }
 
-/* *********** Upgrades Section ************ */
+/*  Upgrades Section  */
 .upgrades {
   background-color: #f8f9fa;
   color: var(--text-color);
@@ -315,7 +315,7 @@ h1 {
   color: var(--primary-color);
 }
 
-/* *********** Footer Styles ************ */
+/*  Footer Styles  */
 footer {
   background-color: var(--nav-background);
   color: white;
@@ -329,18 +329,18 @@ footer {
   font-size: 0.9rem;
 }
 
-/* *********** Responsive Design ************ */
+/*  Responsive Design  */
 @media screen and (max-width: 768px) {
-  /* Adjust checkerboard borders for mobile */
+  
   #wrapper::before,
   #wrapper::after {
-    display: none; /* Hide fixed borders on mobile */
+    display: none; 
   }
   
   #wrapper {
     border-left: 10px solid black;
     border-right: 10px solid black;
-    /* Use smaller checkerboard pattern for mobile borders */
+    
     border-image: url('/images/site/small_check.png') 10 repeat;
   }
   
@@ -422,7 +422,7 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-  /* Further mobile optimizations */
+  
   .siteName a {
     font-size: 1.4rem;
   }
@@ -448,22 +448,21 @@ footer {
     font-size: 0.9rem;
   }
   
-  /* Use smaller border on very small screens */
+  
   #wrapper {
     border-left-width: 5px;
     border-right-width: 5px;
   }
 }
 
-/* *********** Accessibility Improvements ************ */
-/* Focus styles for keyboard navigation */
+/*  Accessibility Improvements  */
 a:focus,
 button:focus {
   outline: 3px solid var(--primary-color);
   outline-offset: 2px;
 }
 
-/* Skip to main content link (for screen readers) */
+/* Skip to main content link */
 .skip-link {
   position: absolute;
   top: -40px;
