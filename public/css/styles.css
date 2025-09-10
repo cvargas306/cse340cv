@@ -1,6 +1,519 @@
 /******* Change Box Model ***************/
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+/* *********** Variables ************ */
+:root {
+  --primary-color: #00bcd4;
+  --secondary-color: #333;
+  --text-color: #333;
+  --background-color: #fff;
+  --nav-background: #3a3a4b;
+  --border-color: #00bcd4;
+  --accent-color: #4CAF50;
+}
+
+/*  General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: var(--text-color);
+  /* Add checkerboard background */
+  background-image: url('/images/site/checkerboard.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: auto;
+}
+
+#wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-left: 15px solid black;
+  border-right: 15px solid black;
+  position: relative;
+}
+
+#wrapper::before,
+#wrapper::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 15px;
+  background-image: url('/images/site/small_check.jpg');
+  background-repeat: repeat-y;
+  z-index: -1;
+}
+
+#wrapper::before {
+  left: calc(50% - 615px); 
+}
+
+#wrapper::after {
+  right: calc(50% - 615px); 
+}
+
+/* Header Styles */
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  color: var(--text-color);
+  border-top: 5px solid var(--primary-color);
+}
+
+.siteName a {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+#tools a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+#tools a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* *********** Navigation Styles ************ */
+nav {
+  background-color: var(--nav-background);
+  color: var(--text-color);
+  padding: 0;
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+nav li {
+  flex: 1;
+  text-align: center;
+  min-width: 80px;
+}
+
+nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: var(--primary-color);
+  color: var(--nav-background);
+}
+
+/* *********** Main Content ************ */
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+h1 {
+  color: var(--text-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* *********** Hero Section ************ */
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-text {
+  color: white;
+  padding: 1rem;
+}
+
+.hero-text h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-text ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text li {
+  padding: 0.5rem 0;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.hero-text li::before {
+  content: "✓ ";
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.own-today-btn {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  max-width: 150px;
+  height: auto;
+}
+
+.own-today-btn:hover {
+  transform: scale(1.05);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* *********** Content Wrapper ************ */
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* *********** Reviews Section ************ */
+.reviews {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reviews h2 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.reviews ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reviews li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-style: italic;
+  color: #555;
+}
+
+.reviews li:last-child {
+  border-bottom: none;
+}
+
+/* *********** Upgrades Section ************ */
+.upgrades {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upgrades h2 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.upgrade-item {
+  text-align: center;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upgrade-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.upgrade-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.upgrade-item a {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.upgrade-item a:hover {
+  color: var(--primary-color);
+}
+
+/* *********** Footer Styles ************ */
+footer {
+  background-color: var(--nav-background);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* *********** Responsive Design ************ */
+@media screen and (max-width: 768px) {
+  /* Adjust checkerboard borders for mobile */
+  #wrapper::before,
+  #wrapper::after {
+    display: none; /* Hide fixed borders on mobile */
+  }
+  
+  #wrapper {
+    border-left: 10px solid black;
+    border-right: 10px solid black;
+    /* Use smaller checkerboard pattern for mobile borders */
+    border-image: url('/images/site/small_check.png') 10 repeat;
+  }
+  
+  /* Header adjustments */
+  #top-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .siteName {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Navigation adjustments */
+  nav ul {
+    flex-direction: column;
+  }
+  
+  nav li {
+    width: 100%;
+  }
+  
+  /* Main content adjustments */
+  main {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Hero section adjustments */
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-text {
+    order: 2;
+    text-align: center;
+  }
+  
+  .hero-image {
+    order: 1;
+  }
+  
+  .own-today-btn {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Content wrapper adjustments */
+  .content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Reviews section comes first on mobile */
+  .reviews {
+    order: 1;
+  }
+  
+  /* Upgrades section comes second on mobile */
+  .upgrades {
+    order: 2;
+  }
+  
+  /* Upgrade grid adjustments */
+  .upgrade-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .upgrade-item img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Further mobile optimizations */
+  .siteName a {
+    font-size: 1.4rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.4rem;
+  }
+  
+  .hero-text li {
+    font-size: 1rem;
+  }
+  
+  .reviews h2,
+  .upgrades h2 {
+    font-size: 1.2rem;
+  }
+  
+  .reviews li {
+    font-size: 0.9rem;
+  }
+  
+  .upgrade-item a {
+    font-size: 0.9rem;
+  }
+  
+  /* Use smaller border on very small screens */
+  #wrapper {
+    border-left-width: 5px;
+    border-right-width: 5px;
+  }
+}
+
+/* *********** Accessibility Improvements ************ */
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link (for screen readers) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  :root {
+    --primary-color: #0099cc;
+    --text-color: #000;
+    --background-color: #fff;
+  }
+  
+  .hero-section {
+    background: var(--primary-color);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  nav,
+  #tools,
+  .own-today-btn {
+    display: none;
+  }
+  
+  .hero-section {
+    background: none;
+    color: black;
+  }
+  
+  .content-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Remove checkerboard background for print */
+  body {
+    background: white;
+  }
+  
+  #wrapper {
+    border: none;
+  }
+  
+  #wrapper::before,
+  #wrapper::after {
+    display: none;
+  }
 }
