@@ -25,6 +25,7 @@ app.set("layout", "./layouts/layout") // not at views root
 app.use(static)
 //Index route
 app.get =("/", baseController.buildHome)
+app.use("/inv", inventoryRoute)
 
 // app.get("/", function(req, res){
 //   res.render("index", {title: "Home"})
