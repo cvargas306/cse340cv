@@ -30,12 +30,11 @@ app.use(static)
 app.get("/", utilities.handleErrors(baseController.buildHome));
 
 app.use("/inv", inventoryRoute)
+app.use("/ierror", intentionalErrorRoute)
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
-
-app.use("/ierror", intentionalErrorRoute)
 
 // app.get("/", function(req, res){
 //   res.render("index", {title: "Home"})

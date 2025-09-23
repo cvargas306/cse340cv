@@ -1,17 +1,8 @@
-/**
- * This controller exists to create an exception for testing
- */
-
 const intentionalErrorController = {};
 
 intentionalErrorController.causeError = async function(req, res, next) {
-    console.log("Causing an error...");
-    let aNumber = 1/0;
-    throw new Error("This is an intentional error.");
-    // The render templates expect data that is not being provided. This will also cause an exception.
-    res.render("./", {
-        title: "Intentional Error",
-    })
+    console.log("Intentionally causing a 500 error for testing...");
+    throw new Error("Oh no! Something went wrong. This is an intentional 500 error for testing purposes.");
 }
 
 module.exports = intentionalErrorController;
