@@ -58,6 +58,44 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the vehicle detail view HTML
+* ************************************ */
+Util.buildVehicleDetailHTML = async function(vehicle){
+  let detailHTML = ''
+  
+  if(vehicle){
+    detailHTML += '<div id="vehicle-detail">'
+    detailHTML += '<div class="vehicle-image">'
+    detailHTML += '<img src="' + vehicle.inv_image + '" alt="' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + '">'
+    detailHTML += '</div>'
+    
+    detailHTML += '<div class="vehicle-info">'
+    detailHTML += '<h2>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h2>'
+    detailHTML += '<p class="price"><strong>Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</strong></p>'
+    
+    detailHTML += '<div class="vehicle-specs">'
+    detailHTML += '<p><strong>Mileage:</strong> ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + ' miles</p>'
+    detailHTML += '<p><strong>Color:</strong> ' + vehicle.inv_color + '</p>'
+    detailHTML += '<p><strong>Year:</strong> ' + vehicle.inv_year + '</p>'
+    detailHTML += '<p><strong>Make:</strong> ' + vehicle.inv_make + '</p>'
+    detailHTML += '<p><strong>Model:</strong> ' + vehicle.inv_model + '</p>'
+    detailHTML += '</div>'
+    
+    detailHTML += '<div class="vehicle-description">'
+    detailHTML += '<h3>Description</h3>'
+    detailHTML += '<p>' + vehicle.inv_description + '</p>'
+    detailHTML += '</div>'
+    
+    detailHTML += '</div>'
+    detailHTML += '</div>'
+  } else {
+    detailHTML += '<p class="notice">Sorry, no vehicle information could be found.</p>'
+  }
+  
+  return detailHTML
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
