@@ -532,3 +532,13 @@ button:focus {
     display: none;
   }
 }
+
+  /* Error page styles */
+div.error-display {
+  display: flex;
+  flex-direction: column;
+}
+div.error-display img {
+  width: 50%;
+  align-self: center;
+}
