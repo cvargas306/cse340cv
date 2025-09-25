@@ -846,3 +846,17 @@ footer a:hover {
   width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
+
+.password-requirements {
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--primary-color);
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+}
+
+.password-requirements span {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
