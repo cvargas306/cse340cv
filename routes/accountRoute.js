@@ -8,4 +8,6 @@ router.get("/", utilities.handleErrors(accountController.buildAccountManagementV
 
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
+router.get("/registration", utilities.handleErrors(accountController.buildRegister));
+
 module.exports = router;

@@ -739,112 +739,110 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Login Form Styles */
-.login-container {
-  max-width: 400px;
+/* ---------- Account Forms (login & register) ---------- */
+:root{
+  --primary-600: #007a8a;   /* base accesible */
+  --primary-700: #006575;   /* hover */
+  --primary-100: rgba(0, 122, 138, 0.12); /* focus ring suave */
+}
+
+.account-container {
+  max-width: 420px;
   margin: 2rem auto;
-  background: white;
+  background: #fff;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
 }
 
-.login-form {
+.account-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
-.login-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-weight: 500;
+.form-field { display: flex; flex-direction: column; gap: .5rem; }
+
+.form-field label { font-weight: 600; color: var(--text-color); }
+
+.form-control {
+  padding: .75rem .9rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  background: #fff;
   color: var(--text-color);
 }
-
-.login-form input[type="email"],
-.login-form input[type="password"] {
-  padding: 0.75rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.login-form input[type="email"]:focus,
-.login-form input[type="password"]:focus {
+.form-control:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+  border-color: var(--primary-600);
+  box-shadow: 0 0 0 3px var(--primary-100);
 }
 
-.login-form input[type="submit"] {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 600;
+/* input + botón */
+.password-field {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .5rem;
+  align-items: center;
+}
+.reveal-button {
+  align-self: stretch;
+  padding: 0 .9rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background: #f8f8f8;
+  font: inherit;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.reveal-button:focus-visible {
+  outline: 3px solid var(--primary-600);
+  outline-offset: 2px;
 }
 
-.login-form input[type="submit"]:hover {
-  background-color: #00a8bb;
-  transform: translateY(-1px);
+/* botones */
+.btn {
+  display: inline-block;
+  padding: .8rem 1.1rem;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
 }
-
-.login-form input[type="submit"]:active {
-  transform: translateY(0);
+.btn-primary {
+  background: var(--primary-600);
+  color: #fff; /* contraste alto */
+  transition: background-color .2s ease, transform .1s ease;
 }
+.btn-primary:hover { background: var(--primary-700); }
+.btn-primary:active { transform: translateY(1px); }
 
-.signup-link {
+/* enlaces secundarios */
+.alt-link {
   text-align: center;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #e0e0e0;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e6e6e6;
   color: #666;
 }
+.alt-link a { color: var(--primary-600); font-weight: 600; text-decoration: none; }
+.alt-link a:hover { text-decoration: underline; }
 
-.signup-link a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
+.fine-print { margin-top: .4rem; font-size: .9rem; color: #555; }
+
+/* estados inválidos nativos */
+.form-control:invalid { border-color: #e74c3c; }
+
+/* responsive */
+@media (max-width: 480px) {
+  .account-container { margin: 1rem; padding: 1.5rem; }
+  .btn { width: 100%; }
 }
 
-.signup-link a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 480px) {
-  .login-container {
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-  
-  .login-form input[type="email"],
-  .login-form input[type="password"],
-  .login-form input[type="submit"] {
-    padding: 0.875rem;
-    font-size: 1rem;
-  }
-}
-
-/* Accessibility Improvements */
-.login-form input[type="email"]:invalid {
-  border-color: #e74c3c;
-}
-
-.login-form input[type="password"]:invalid {
-  border-color: #e74c3c;
-}
-
-/* Loading state for submit button */
-.login-form input[type="submit"]:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-  transform: none;
+/* util SR-only (por si no la tenías) */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
