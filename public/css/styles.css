@@ -741,9 +741,9 @@ footer a:hover {
 
 /* ---------- Account Forms (login & register) ---------- */
 :root{
-  --primary-600: #007a8a;   /* base accesible */
-  --primary-700: #006575;   /* hover */
-  --primary-100: rgba(0, 122, 138, 0.12); /* focus ring suave */
+  --primary-600: #007a8a;
+  --primary-700: #006575;
+  --primary-100: rgba(0, 122, 138, 0.12);
 }
 
 .account-container {
@@ -761,32 +761,73 @@ footer a:hover {
   gap: 1.25rem;
 }
 
-.form-field { display: flex; flex-direction: column; gap: .5rem; }
+.form-field { 
+  display: flex; 
+  flex-direction: column; 
+  gap: .5rem; 
+}
 
-.form-field label { font-weight: 600; color: var(--text-color); }
+.form-field label { 
+  font-weight: 600; 
+  color: var(--text-color); 
+}
 
 .form-control {
   padding: .75rem .9rem;
   border: 2px solid #e0e0e0;
   border-radius: 6px;
   font-size: 1rem;
-  transition: border-color .2s ease, box-shadow .2s ease;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
   background: #fff;
   color: var(--text-color);
 }
+
 .form-control:focus {
   outline: none;
   border-color: var(--primary-600);
   box-shadow: 0 0 0 3px var(--primary-100);
 }
 
-/* input + botón */
+/* HTML5 Validation States - Assignment Approach */
+input:required:invalid, 
+input:focus:invalid {
+  border-color: #e74c3c;
+  background-color: #fdf2f2;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+input:required:valid {
+  border-color: #27ae60;
+  background-color: #f2fdf5;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+/* Optional: Add icons if you have images */
+input:required:invalid, 
+input:focus:invalid {
+  background-image: url('/images/site/invalid.png');
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding-right: 40px;
+}
+
+input:required:valid {
+  background-image: url('/images/site/valid.png');
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding-right: 40px;
+}
+
+/* Password field with reveal button */
 .password-field {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: .5rem;
   align-items: center;
 }
+
 .reveal-button {
   align-self: stretch;
   padding: 0 .9rem;
@@ -795,13 +836,31 @@ footer a:hover {
   background: #f8f8f8;
   font: inherit;
   cursor: pointer;
+  transition: background-color .2s ease;
 }
+
+.reveal-button:hover {
+  background: #e8e8e8;
+}
+
 .reveal-button:focus-visible {
   outline: 3px solid var(--primary-600);
   outline-offset: 2px;
 }
 
-/* botones */
+/* Password requirements info box */
+.password-requirements {
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--primary-600);
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Buttons */
 .btn {
   display: inline-block;
   padding: .8rem 1.1rem;
@@ -809,16 +868,28 @@ footer a:hover {
   border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
-}
-.btn-primary {
-  background: var(--primary-600);
-  color: #fff; /* contraste alto */
   transition: background-color .2s ease, transform .1s ease;
 }
-.btn-primary:hover { background: var(--primary-700); }
-.btn-primary:active { transform: translateY(1px); }
 
-/* enlaces secundarios */
+.btn-primary {
+  background: var(--primary-600);
+  color: #fff;
+}
+
+.btn-primary:hover { 
+  background: var(--primary-700); 
+}
+
+.btn-primary:active { 
+  transform: translateY(1px); 
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Alternative links (sign-up, login) */
 .alt-link {
   text-align: center;
   margin-top: 1.25rem;
@@ -826,37 +897,50 @@ footer a:hover {
   border-top: 1px solid #e6e6e6;
   color: #666;
 }
-.alt-link a { color: var(--primary-600); font-weight: 600; text-decoration: none; }
-.alt-link a:hover { text-decoration: underline; }
 
-.fine-print { margin-top: .4rem; font-size: .9rem; color: #555; }
-
-/* estados inválidos nativos */
-.form-control:invalid { border-color: #e74c3c; }
-
-/* responsive */
-@media (max-width: 480px) {
-  .account-container { margin: 1rem; padding: 1.5rem; }
-  .btn { width: 100%; }
+.alt-link a { 
+  color: var(--primary-600); 
+  font-weight: 600; 
+  text-decoration: none; 
 }
 
-/* util SR-only (por si no la tenías) */
+.alt-link a:hover { 
+  text-decoration: underline; 
+}
+
+/* Fine print / helper text */
+.fine-print { 
+  margin-top: .4rem; 
+  font-size: .9rem; 
+  color: #555; 
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .account-container { 
+    margin: 1rem; 
+    padding: 1.5rem; 
+  }
+  .btn { 
+    width: 100%; 
+  }
+  .password-field {
+    grid-template-columns: 1fr;
+  }
+  .reveal-button {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Screen reader only utility */
 .sr-only {
   position: absolute !important;
-  width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-}
-
-.password-requirements {
-  background-color: #f8f9fa;
-  border-left: 4px solid var(--primary-color);
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border-radius: 4px;
-}
-
-.password-requirements span {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.4;
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px;
+  overflow: hidden; 
+  clip: rect(0,0,0,0); 
+  white-space: nowrap; 
+  border: 0;
 }
