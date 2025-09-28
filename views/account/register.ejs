@@ -14,21 +14,21 @@
 
     <form class="account-form" action="/account/register" method="post">
         <div class="form-field">
-            <label for="reg_firstname">First name</label>
-            <input id="reg_firstname" class="form-control" type="text" name="account_firstname" required
-                autocomplete="given-name" value="<%= locals.account_firstname || '' %>">
+            <label for="accountFirstname">First name</label>
+            <input id="accountFirstname" class="form-control" type="text" name="account_firstname" required
+                autocomplete="given-name" value="<%= locals.account_firstname %>">
         </div>
 
         <div class="form-field">
-            <label for="reg_lastname">Last name</label>
-            <input id="reg_lastname" class="form-control" type="text" name="account_lastname" required
-                autocomplete="family-name" value="<%= locals.account_lastname || '' %>">
+            <label for="accountLastname">Last name</label>
+            <input id="accountLastname" class="form-control" type="text" name="account_lastname" required
+                autocomplete="family-name" value="<%= locals.account_lastname %>">
         </div>
 
         <div class="form-field">
-            <label for="reg_email">Email address</label>
-            <input id="reg_email" class="form-control" type="email" name="account_email" required autocomplete="email"
-                value="<%= locals.account_email || '' %>">
+            <label for="accountEmail">Email address</label>
+            <input id="accountEmail" class="form-control" type="email" name="account_email" required autocomplete="email"
+                value="<%= locals.account_email %>">
         </div>
 
         <div class="form-field">

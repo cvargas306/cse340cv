@@ -1,10 +1,17 @@
 <h1><%- title %></h1>
 <%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
 
 <div class="account-container" role="region" aria-labelledby="accountFormTitle">
   <h2 id="accountFormTitle" class="sr-only">Login form</h2>
 
-  <form class="account-form" action="/account/login" method="post">
+  <form id="loginForm" class="account-form" action="/account/login" method="post">
     <div class="form-field">
       <label for="login_email">Email</label>
       <input id="login_email" class="form-control" type="email"
