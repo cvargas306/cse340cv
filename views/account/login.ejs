@@ -1,12 +1,4 @@
 <h1><%- title %></h1>
-<%- messages() %>
-<% if (errors) { %>
-  <ul class="notice">
- <% errors.array().forEach(error => { %>
-   <li><%= error.msg %></li>
-<%  }) %>
- </ul>
-<% } %>
 
 <div class="account-container" role="region" aria-labelledby="accountFormTitle">
   <h2 id="accountFormTitle" class="sr-only">Login form</h2>
