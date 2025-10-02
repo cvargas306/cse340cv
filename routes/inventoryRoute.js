@@ -17,6 +17,9 @@ router.get("/", utilities.handleErrors(invController.buildManagement));
 
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
 
+// Route to display edit inventory view
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInventory));
+
 
 // Validation to POST routes
 router.post(
