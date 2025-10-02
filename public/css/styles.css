@@ -1148,3 +1148,47 @@ input:required:valid {
     font-size: 16px; /* Prevents zoom on iOS */
   }
 }
+
+/* Inventory Management Table */
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden; /* keeps border-radius visible */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#inventoryDisplay thead {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: left;
+  font-weight: 600;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+#inventoryDisplay tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* zebra striping */
+}
+
+#inventoryDisplay tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+#inventoryDisplay a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#inventoryDisplay a:hover {
+  text-decoration: underline;
+}
