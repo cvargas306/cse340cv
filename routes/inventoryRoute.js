@@ -22,6 +22,9 @@ router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInvent
 
 router.post("/edit-inventory", invValidate.inventoryRules(), invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
 
+// Delete vehicle information routes
+router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteInventory));
+router.post("/delete/", utilities.handleErrors(invController.deleteInventory));
 
 // Validation to POST routes
 router.post(

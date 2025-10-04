@@ -268,4 +268,47 @@ invCont.updateInventory = async function (req, res, next) {
   }
 }
 
+/* ***************************
+ *  Build delete confirmation view
+ * ************************** */
+invCont.buildDeleteInventory = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id)
+  const nav = await utilities.getNav()
+  const item = await invModel.getInventoryByInventoryId(inv_id)
+
+  if (!item) {
+    req.flash("notice", "Vehicle not found.")
+    return res.redirect("/inv/")
+  }
+  const name = `${item.inv_make} ${item.inv_model}`
+
+  res.render("inventory/delete-confirm", {
+    title: "Delete " + name,
+    errors: null,
+    nav,
+    inv_id: item.inv_id,
+    inv_make: item.inv_make,
+    inv_model: item.inv_model,
+    inv_year: item.inv_year,
+    inv_price: item.inv_price,
+  })
+}
+
+/* ***************************
+ *  Delete Inventory (POST)
+ * ************************** */
+invCont.deleteInventory = async function (req, res, next) {
+  const inv_id = parseInt(req.body.inv_id)
+  const result = await invModel.deleteInventory(inv_id)
+
+  if (result === 1) {
+    req.flash("notice", "The vehicle was successfully deleted.")
+    res.redirect("/inv/")
+  } else {
+    req.flash("notice", "Sorry, the delete failed.")
+    res.redirect(`/inv/delete/${inv_id}`)
+  }
+}
+
+
 module.exports = invCont

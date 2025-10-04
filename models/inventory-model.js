@@ -34,7 +34,7 @@ async function getInventoryByInventoryId(inv_id) {
       `SELECT * FROM public.inventory WHERE inv_id = $1`,
       [inv_id]
     )
-    return data.rows[0]
+    return data.rows[0] || null
   } catch (error) {
     console.error("getInventoryByInventoryId error " + error)
   }
@@ -128,4 +128,18 @@ async function updateInventory(
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInventoryId, addClassification, addInventory, updateInventory};
+/* *******************
+ *  Delete Inventory 
+ * ***************** */
+ async function deleteInventory(inv_id) {
+  try {
+    const sql = 'DELETE FROM inventory WHERE inv_id = $1'
+    const data = await pool.query(sql, [inv_id])
+  return data
+  } catch (error) {
+    console.error("Delete Inventory Error: " + error)
+    return 0
+  }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInventoryId, addClassification, addInventory, updateInventory, deleteInventory};
