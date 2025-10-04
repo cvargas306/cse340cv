@@ -7,7 +7,7 @@
   <%  }) %>
    </ul>
 <% } %>
-<form class="input-box" action="/inv/edit-inventory" method="post">
+<form class="input-box" id="updateForm" action="/inv/edit-inventory" method="post">
     <label>Make
         <input type="text" value="<%- locals.inv_make || '' %>" placeholder="Ford" name="inv_make" required minlength="2" maxlength="50">
         <span class="fine-print">Required.</span>
@@ -58,5 +58,10 @@
         <span class="fine-print">Required.</span>
     </label>
     
-    <input type="submit" value="EDIT">
+    <input type="submit" value="Apply Changes" disabled>
+    <input type="hidden" name="inv_id"
+<% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+<% } %>>
 </form>
+
+<script src="/js/inv-update.js"></script>
