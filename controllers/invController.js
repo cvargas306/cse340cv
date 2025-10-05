@@ -297,16 +297,18 @@ invCont.buildDeleteInventory = async function (req, res, next) {
 /* ***************************
  *  Delete Inventory (POST)
  * ************************** */
-invCont.deleteInventory = async function (req, res, next) {
-  const inv_id = parseInt(req.body.inv_id)
-  const result = await invModel.deleteInventory(inv_id)
 
-  if (result === 1) {
-    req.flash("notice", "The vehicle was successfully deleted.")
+invCont.deleteInventory = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const inv_id = parseInt(req.body.inv_id);
+  const deleteResult = await invModel.deleteInventory(inv_id);
+
+  if (deleteResult) {
+    req.flash("notice", `The vehicle was successfully deleted.`)
     res.redirect("/inv/")
   } else {
     req.flash("notice", "Sorry, the delete failed.")
-    res.redirect(`/inv/delete/${inv_id}`)
+    res.redirect("/inv/delete/inv_id")
   }
 }
 
