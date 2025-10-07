@@ -159,4 +159,32 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
+/* ****************************************
+ *  Check authorization
+ * ************************************ */
+Util.checkAuthorizationManager = (req, res, next) => {
+  if (req.cookies.jwt) {
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (err) {
+          req.flash("notice", "Please log in.")
+          res.clearCookie("jwt")
+          return res.redirect("/account/login")
+        }
+        if (accountData.account_type === "Employee" || accountData.account_type === "Admin") {
+          return next()
+        }
+        req.flash("notice", "You are not authorized to modify inventory.")
+        return res.redirect("/account/login")
+      }
+    )
+  } else {
+    req.flash("notice", "You are not authorized to modify inventory.")
+    return res.redirect("/account/login")
+  }
+}
+
+
 module.exports = Util
