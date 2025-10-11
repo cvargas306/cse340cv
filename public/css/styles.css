@@ -802,7 +802,7 @@ input:required:valid {
   box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
 }
 
-/* Optional: Add icons if you have images */
+/* Optional: Add icons if there are images */
 input:required:invalid, 
 input:focus:invalid {
   background-image: url('/images/site/invalid.png');
