@@ -88,6 +88,12 @@ Util.buildVehicleDetailHTML = async function(vehicle){
     detailHTML += '<h3>Description</h3>'
     detailHTML += '<p>' + vehicle.inv_description + '</p>'
     detailHTML += '</div>'
+
+    // SERVICE REQUEST BUTTON 
+    detailHTML += '<div class="service-request-section">'
+    detailHTML += '<h3>Need More Information?</h3>'
+    detailHTML += '<p><a href="/service/request?inv_id=' + vehicle.inv_id + '" class="button">Request Information About This Vehicle</a></p>'
+    detailHTML += '</div>'
     
     detailHTML += '</div>'
     detailHTML += '</div>'

@@ -1,0 +1,53 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (locals.requests && requests.length > 0) { %>
+  <p class="info">Showing <%= requests.length %> open/in-progress request(s)</p>
+  
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Customer</th>
+        <th>Subject</th>
+        <th>Type</th>
+        <th>Vehicle</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% requests.forEach(request => { %>
+        <tr>
+          <td><%= new Date(request.request_created).toLocaleDateString() %></td>
+          <td><%= request.account_firstname %> <%= request.account_lastname %></td>
+          <td><%= request.request_subject %></td>
+          <td><%= request.request_type %></td>
+          <td>
+            <% if (request.inv_make) { %>
+              <%= request.inv_year %> <%= request.inv_make %> <%= request.inv_model %>
+            <% } else { %>
+              N/A
+            <% } %>
+          </td>
+          <td>
+            <span class="status-badge status-<%= request.request_status %>">
+              <%= request.request_status %>
+            </span>
+          </td>
+          <td>
+            <a href="/service/respond/<%= request.request_id %>">Respond</a> |
+            <a href="/service/detail/<%= request.request_id %>">View</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p class="notice">No open requests at this time. Great job!</p>
+<% } %>
