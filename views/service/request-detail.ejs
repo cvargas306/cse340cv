@@ -1,0 +1,51 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (locals.request) { %>
+  <div class="request-detail">
+    <div class="request-header">
+      <h2><%= request.request_subject %></h2>
+      <span class="status-badge status-<%= request.request_status %>">
+        <%= request.request_status %>
+      </span>
+    </div>
+
+    <div class="request-info">
+      <p><strong>Request Type:</strong> <%= request.request_type %></p>
+      <p><strong>Submitted:</strong> <%= new Date(request.request_created).toLocaleString() %></p>
+      <% if (request.request_updated !== request.request_created) { %>
+        <p><strong>Last Updated:</strong> <%= new Date(request.request_updated).toLocaleString() %></p>
+      <% } %>
+      
+      <% if (request.inv_make) { %>
+        <p><strong>Vehicle:</strong> <%= request.inv_year %> <%= request.inv_make %> <%= request.inv_model %></p>
+      <% } %>
+    </div>
+
+    <div class="request-message">
+      <h3>Your Message:</h3>
+      <p><%= request.request_message %></p>
+    </div>
+
+    <% if (request.staff_response) { %>
+      <div class="staff-response">
+        <h3>Staff Response:</h3>
+        <p><%= request.staff_response %></p>
+        <% if (request.staff_firstname) { %>
+          <p class="responder"><em>- <%= request.staff_firstname %> <%= request.staff_lastname %></em></p>
+        <% } %>
+      </div>
+    <% } else { %>
+      <p class="notice">No response yet. We'll reply as soon as possible.</p>
+    <% } %>
+
+    <p><a href="/service/my-requests">← Back to My Requests</a></p>
+  </div>
+<% } else { %>
+  <p class="notice">Request not found.</p>
+<% } %>

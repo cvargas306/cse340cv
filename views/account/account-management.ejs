@@ -21,7 +21,27 @@
       </a>
     </p>
 
-    <!-- 3. Inventory section (ONLY for Employee/Admin) -->
+    <!-- 3. SERVICE REQUESTS SECTION -->
+    <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
+      <!-- Staff View: Show Queue Link -->
+      <div class="service-section">
+        <h3>Service Requests</h3>
+        <ul>
+          <li><a href="/service/queue">View Service Request Queue</a></li>
+        </ul>
+      </div>
+    <% } else { %>
+      <!-- Client View: Show Submit/View Links -->
+      <div class="service-section">
+        <h3>Service Requests</h3>
+        <ul>
+          <li><a href="/service/request">Submit New Service Request</a></li>
+          <li><a href="/service/my-requests">View My Service Requests</a></li>
+        </ul>
+      </div>
+    <% } %>
+
+    <!-- 4. Inventory section (ONLY for Employee/Admin) -->
     <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
       <div class="inventory-section">
         <h3>Inventory Management</h3> 

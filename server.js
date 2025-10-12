@@ -19,6 +19,7 @@ const pool = require('./database/')
 const accountRoute = require('./routes/accountRoute');
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const serviceRoute = require("./routes/serviceRoute")
 
 /* ***********************
  * Middleware
@@ -63,6 +64,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute)
 
 app.use("/account", accountRoute);
+
+// Service Route
+app.use("/service", serviceRoute)
 
 app.use("/ierror", intentionalErrorRoute)
 // File Not Found Route - must be last route in list

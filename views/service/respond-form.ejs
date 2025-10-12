@@ -1,0 +1,56 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<% if (locals.request) { %>
+  <div class="request-summary">
+    <h2>Original Request</h2>
+    <p><strong>From:</strong> <%= request.account_firstname %> <%= request.account_lastname %> (<%= request.account_email %>)</p>
+    <p><strong>Subject:</strong> <%= request.request_subject %></p>
+    <p><strong>Type:</strong> <%= request.request_type %></p>
+    <p><strong>Date:</strong> <%= new Date(request.request_created).toLocaleString() %></p>
+    <% if (request.inv_make) { %>
+      <p><strong>Vehicle:</strong> <%= request.inv_year %> <%= request.inv_make %> <%= request.inv_model %></p>
+    <% } %>
+    <div class="message-box">
+      <p><strong>Customer Message:</strong></p>
+      <p><%= request.request_message %></p>
+    </div>
+  </div>
+
+  <form class="input-box" action="/service/respond" method="post">
+    <h2>Your Response</h2>
+
+    <label for="staff_response">Response Message*
+      <textarea name="staff_response" id="staff_response" required 
+                minlength="10" maxlength="1000" rows="8"
+                placeholder="Type your response to the customer..."><%= locals.staff_response %></textarea>
+    </label>
+
+    <label for="request_status">Update Status*
+      <select name="request_status" id="request_status" required>
+        <option value="in-progress" <%= locals.request_status === 'in-progress' ? 'selected' : '' %>>In Progress</option>
+        <option value="closed" <%= locals.request_status === 'closed' ? 'selected' : '' %>>Closed/Resolved</option>
+      </select>
+    </label>
+
+    <input type="hidden" name="request_id" value="<%= request.request_id %>">
+    
+    <input type="submit" value="SUBMIT RESPONSE">
+    <p><a href="/service/queue">← Back to Queue</a></p>
+  </form>
+<% } else { %>
+  <p class="notice">Request not found.</p>
+<% } %>
